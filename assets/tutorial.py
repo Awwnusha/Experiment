@@ -19,7 +19,6 @@ PLAYER_VEL = 5
 # say String a =  [ '10', '20', '30'] -> list(map(a)) = [10, 20, 30]
 
 
-
 # lambda = anonymous definition! ex- def minus(x, y):
 # return minus = x - y  instead minus lambda = x,y : x - y 
 # return a[1] instead lambda x : x[1]
