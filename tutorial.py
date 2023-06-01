@@ -193,6 +193,9 @@ class Fire(Object):
     def __init__(self, x, y, width, height):
         super().__init__(x, y, width, height, "fire")
         self.fire = load_sprite_sheets("Traps", "Fire", width, height)
+        self.fire1 = load_sprite_sheets("Traps", "Fire", width, height)
+        self.fire2 = load_sprite_sheets("Traps", "Fire", width, height)
+        self.fire3 = load_sprite_sheets("Traps", "Fire", width, height)
         #print(self.fire)
         self.image = self.fire["off"][0]
         self.mask = pygame.mask.from_surface(self.image)
@@ -295,13 +298,23 @@ def main(window):
     player = Player(100, 100, 50, 50)
     fire = Fire(100, HEIGHT - block_size - 64, 16, 32)
     fire.on()
+    
+    fire1 = Fire(600, HEIGHT - block_size - 64, 16, 32)
+    fire1.on()
+    
+    fire2 = Fire(865, ( block_size * 2.3) - 64, 16, 32)
+    fire2.on()
+    
+    fire3 = Fire(1500, (HEIGHT - block_size  * 2)- 64, 16, 32)
+    fire3.on()
+    
     floor = [Block(i * block_size, HEIGHT - block_size, block_size) for i in range(-WIDTH // block_size, (WIDTH * 2) // block_size)]
-    objects = [*floor, Block(0, HEIGHT - block_size * 2, block_size), 
-               Block(block_size * 2, HEIGHT - block_size * 4, block_size), fire, 
+    objects = [*floor, Block(0, HEIGHT - block_size * 2, block_size),
+               Block(block_size * 2, HEIGHT - block_size * 4, block_size), fire,
                Block(block_size * 3, HEIGHT - block_size * 4, block_size),
-               Block(block_size * 4, HEIGHT - block_size * 4, block_size), 
+               Block(block_size * 4, HEIGHT - block_size * 4, block_size), fire2,
                Block(block_size * 5, HEIGHT - block_size * 4, block_size), 
-               Block(block_size * 6, HEIGHT - block_size * 4, block_size),
+               Block(block_size * 6, HEIGHT - block_size * 4, block_size), fire3,
                Block(block_size * 8, HEIGHT - block_size * 5, block_size),
                Block(block_size * 9, HEIGHT - block_size * 6, block_size),
                *floor, Block(1000, HEIGHT - block_size * 2, block_size),
@@ -312,8 +325,8 @@ def main(window):
                Block(1000, HEIGHT - block_size * 7, block_size),
                Block(1200, HEIGHT - block_size * 5, block_size),
                Block(1290, HEIGHT - block_size * 5, block_size),
-               Block(1400, HEIGHT - block_size * 3, block_size),] #adding extra block
-   
+               Block(1400, HEIGHT - block_size * 3, block_size),
+               Block(1500, HEIGHT - block_size * 2, block_size), fire3,] #adding extra block
     offset_x = 0
     scroll_area_width = 200
     
@@ -332,6 +345,9 @@ def main(window):
                 
         player.loop(FPS)
         fire.loop()
+        fire1.loop()
+        fire2.loop()
+        fire3.loop()
         handle_move(player, objects)
         draw(window, background, bg_image, player, objects, offset_x)
         
