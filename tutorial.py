@@ -297,10 +297,22 @@ def main(window):
     fire.on()
     floor = [Block(i * block_size, HEIGHT - block_size, block_size) for i in range(-WIDTH // block_size, (WIDTH * 2) // block_size)]
     objects = [*floor, Block(0, HEIGHT - block_size * 2, block_size), 
-               Block(block_size * 3, HEIGHT - block_size * 4, block_size), fire, Block(block_size * 4, HEIGHT - block_size * 6, block_size), 
+               Block(block_size * 2, HEIGHT - block_size * 4, block_size), fire, 
+               Block(block_size * 3, HEIGHT - block_size * 4, block_size),
+               Block(block_size * 4, HEIGHT - block_size * 4, block_size), 
                Block(block_size * 5, HEIGHT - block_size * 4, block_size), 
-               Block(block_size * 6, HEIGHT - block_size * 4, block_size), 
-               Block(block_size * 7, HEIGHT - block_size * 4, block_size)] #adding extra block
+               Block(block_size * 6, HEIGHT - block_size * 4, block_size),
+               Block(block_size * 8, HEIGHT - block_size * 5, block_size),
+               Block(block_size * 9, HEIGHT - block_size * 6, block_size),
+               *floor, Block(1000, HEIGHT - block_size * 2, block_size),
+               Block(1000, HEIGHT - block_size * 3, block_size),
+               Block(1000, HEIGHT - block_size * 4, block_size),
+               Block(1000, HEIGHT - block_size * 5, block_size),
+               Block(1000, HEIGHT - block_size * 6, block_size),
+               Block(1000, HEIGHT - block_size * 7, block_size),
+               Block(1200, HEIGHT - block_size * 5, block_size),
+               Block(1290, HEIGHT - block_size * 5, block_size),
+               Block(1400, HEIGHT - block_size * 3, block_size),] #adding extra block
    
     offset_x = 0
     scroll_area_width = 200
